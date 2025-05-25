@@ -1,10 +1,36 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from to_do_list import models
 
 # Create your views here.
-def home(request):
+
+# View responsavel por exibir a lista de tarefas
+def index(request):
+    # Pegando as tarefas
+    tasks = models.Task.objects.all().order_by("task_completed")
+
+    # Adicionando variaveis a serem usandas no html
     context = {
         'text': 'HOME',
-        'a': ["TESTE 1", "TESTE 2", "TESTE 3", "TESTE 4", "TESTE 5", "TESTE 6", "TESTE 7", "TESTE 8", "TESTE 9"]
+        'tasks': tasks
+    }
+
+    return render(request, 'index.html', context)
+
+
+# View responsavel pelas pesquisas
+def search(request):
+    search_value = request.GET.get('q', '')
+
+    if search_value.isspace() or search_value == '':
+        return redirect("index")
+
+    tasks = models.Task.objects.all()\
+        .filter(title__icontains=search_value)\
+        .order_by("task_completed")
+
+
+    context = {
+        'text': search_value,
+        'tasks': tasks
     }
     return render(request, 'index.html', context)

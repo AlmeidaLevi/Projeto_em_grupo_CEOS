@@ -20,5 +20,6 @@ from to_do_list import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),
+    path('', views.index, name='index'),
+    path('search/', views.search, name='search')
 ]
