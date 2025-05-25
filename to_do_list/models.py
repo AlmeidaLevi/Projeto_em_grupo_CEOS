@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 # Tabela em que estarão as tarefas da to_do_list
 class Task(models.Model):
     title = models.CharField(max_length=255)
-    description = models.CharField(max_length=1000, blank=True)
     task_completed = models.BooleanField(default=False)
     owner = models.ForeignKey(
         User,

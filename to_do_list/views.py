@@ -21,9 +21,24 @@ def search(request):
     }
     return render(request, 'index.html', context)
 
+
+# View que cria uma nova tarefa
+def create_task(request):
+    new_task = request.POST.get('nova_tarefa')
+    task_object = models.Task(title=new_task)
+    task_object.save()
+    return redirect("index")
+
+
+# View que cria uma nova tarefa
+def delete_task(request):
+    new_task = request.POST.get('nova_tarefa')
+    task_object = models.Task(title=new_task)
+    task_object.delete()
+    return redirect("index")
+
+
 # View que marca ou desmarca a tarefa como concluida
-
-
 def mark_task(request):
 
     # Essa função usa request.POST para descobrir qual tarefa o usuario clicou.
@@ -71,7 +86,7 @@ def mark_task(request):
     return render(request, 'index.html', context)
 
 
-# View responsavel pela
+# View responsavel pela pagina da lista de tarefas
 def index(request):
 
     if request.method == "POST":

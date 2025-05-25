@@ -68,3 +68,13 @@ body {
   width: 100%;
   max-width: 32rem;
 }
+
+.add-task {
+  display: flex;
+  justify-content: end;
+}
+
+.button {
+  font-size: 2.4rem;
+  contain-intrinsic-size: 2.4rem;
+}
