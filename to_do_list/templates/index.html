@@ -1,30 +1,25 @@
-{% load static %}<!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
-    <link rel="stylesheet" href="{% static "style.css" %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <link rel="stylesheet" href="{% static "style.css" %}">
 </head>
+
 <body>
+
   <header>
+
     <div class="search">
       <form action="{% url "search" %}" method="GET">
-          <input
-          type="search"
-          class="search-input"
-          placeholder="Search"
-          id="search"
-          name="q"
-          value={{ request.GET.q.strip }}
-          >
-        </form>
+        <input type="search" class="search-input" placeholder="Search" id="search" name="q" value={{ request.GET.q.strip }}>
+      </form>
     </div>
-  </header>
 
-    {% block texto %}
-        <h1> {{ text }} </h1>
-    {% endblock texto %}
+  </header>
 
   <main class="content">
 
@@ -36,20 +31,32 @@
           Tarefas
         </caption>
 
-        <!-- <thead>
-          <tr class="table-row table-row-header">
-            <th class="table-header">Tarefa</th>
-          </tr>
-        </thead> -->
-
         <tbody>
           {% for task in tasks %}
-            <tr class="table-row">
-              <td class="table-cel">
-                {{ task }}
-              </td>
-            </tr>
+            <form action="{% url "index" %}" method="POST">
+              {% csrf_token %}
+              {% if task.task_completed %}
+                <tr class="table-row">
+                  <td class="table-cel">
+                    <button type="submit" name="{{ task.id }}">
+                      <input type="checkbox" id="{{ task.id }}" name="{{ task.id }}" checked>
+                      <label for="{{ task.id }}"><s>{{ task }}</s></label>
+                    </button>
+                  </td>
+                </tr>
+              {% else %}
+                <tr class="table-row">
+                  <td class="table-cel">
+                    <button type="submit", name="{{ task.id }}">
+                      <input type="checkbox" id="{{ task.id }}" name="{{ task.id }}" value="completed">
+                      <label for="{{ task.id }}">{{ task }}</label>
+                    </button>
+                  </td>
+                </tr>
+              {% endif %}
+            </form>
           {% endfor %}
+
         </tbody>
 
       </table>

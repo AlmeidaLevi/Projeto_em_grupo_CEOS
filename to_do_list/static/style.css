@@ -53,6 +53,10 @@ body {
   padding: 1.5rem;
 }
 
+.table-cel s {
+  color: rgb(98, 98, 114);
+}
+
 .search {
   display: flex;
   justify-content: center;
