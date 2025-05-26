@@ -70,28 +70,38 @@
 
         <tbody>
           {% for task in tasks %}
-            <form action="{% url "index" %}" method="post">
-              {% csrf_token %}
-              {% if task.task_completed %}
-                <tr class="table-row">
-                  <td class="table-cel">
-                    <button type="submit" name="{{ task.id }}">
-                      <input type="checkbox" id="{{ task.id }}" name="{{ task.id }}" checked>
-                      <label for="{{ task.id }}"><s>{{ task }}</s></label>
+            <tr class="table-row">
+              <form action="{% url "mark_task" task.id %}" method="post">
+                {% csrf_token %}
+                <td class="table-cel">
+                  <button type="submit" name="{{ task.id }}">
+
+                {% if task.task_completed %}
+                    <input type="checkbox" id="{{ task.id }}" name="{{ task.id }}" checked>
+                    <label for="{{ task.id }}"><s>{{ task }}</s></label>
+                  </button>
+                </td>
+
+                {% else %}
+                    <input type="checkbox" id="{{ task.id }}" name="{{ task.id }}">
+                    <label for="{{ task.id }}">{{ task }}</label>
+                  </button>
+                </td>
+                {% endif %}
+
+              </form>
+
+                <form action="{% url "delete_task" task.id %}" method="POST">
+                  {% csrf_token %}
+                  <td class='table-cel'>
+                    <button type="submit" name="delete {{ task.id }}">
+                      APAGAR TAREFA
                     </button>
                   </td>
-                </tr>
-              {% else %}
-                <tr class="table-row">
-                  <td class="table-cel">
-                    <button type="submit", name="{{ task.id }}">
-                      <input type="checkbox" id="{{ task.id }}" name="{{ task.id }}">
-                      <label for="{{ task.id }}">{{ task }}</label>
-                    </button>
-                  </td>
-                </tr>
-              {% endif %}
-            </form>
+
+                </form>
+
+            </tr>
           {% endfor %}
 
         </tbody>
