@@ -50,6 +50,15 @@ def delete_task(request, task_id):
     return redirect("index")
 
 
+# View que atualiza uma tarefa
+def update_task(request, task_id):
+    new_title = request.POST.get("novo_titulo")
+    task_object = models.Task.objects.get(id=task_id)
+    task_object.title = new_title
+    task_object.save()
+    return redirect("index")
+
+
 # View responsavel pela pagina da lista de tarefas
 def index(request):
 

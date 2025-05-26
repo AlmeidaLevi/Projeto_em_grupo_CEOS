@@ -99,4 +99,6 @@ body {
   color: rgb(98, 98, 114);
 }
 
-
+.task-description {
+  background-color: #fff;
+}

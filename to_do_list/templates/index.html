@@ -17,7 +17,7 @@
 
   <header>
 
-    
+
 
   </header>
 
@@ -26,7 +26,7 @@
 
       <form action="{% url 'create_task' %}" method='POST'>
         {% csrf_token %}
-        <!-- Modal -->
+        <!-- Modal Criar tarefa-->
         <div class="modal fade" id="myModal" role="dialog">
           <div class="modal-dialog">
 
@@ -34,7 +34,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Modal Header</h4>
+              <h4 class="modal-title">Adicionar nova tarefa</h4>
             </div>
             <div class="modal-body">
               <input type="text" name="nova_tarefa" required id="nova_tarefa" placeholder="Nova tarefa">
@@ -76,19 +76,23 @@
               <form action="{% url 'mark_task' task.id %}" method="post">
                 {% csrf_token %}
                 <td class="table-cel">
-                  <button type="submit" name="{{ task.id }}">
+                  <button type="submit" name="{{ task.id }}" id="{{ task.id }}">
 
                 {% if task.task_completed %}
-                    <input type="checkbox" id="{{ task.id }}" name="{{ task.id }}" checked>
                     <label for="{{ task.id }}"><s>{{ task }}</s></label>
                   </button>
+                    <strong class="task-description">
+                      Tarefa concluida
+                    </strong>
                 </td>
 
                 {% else %}
-                    <input type="checkbox" id="{{ task.id }}" name="{{ task.id }}">
                     <label for="{{ task.id }}">{{ task }}</label>
                   </button>
-                </td>
+                    <strong class="task-description">
+                      Tarefa a ser feita
+                    </strong>
+                  </td>
                 {% endif %}
 
               </form>
@@ -100,8 +104,37 @@
                       APAGAR TAREFA
                     </button>
                   </td>
-
                 </form>
+
+
+                <form action="{% url 'update_task' task.id %}" method='POST'>
+                {% csrf_token %}
+
+                <!-- Modal Atualizar tarefa -->
+                <div class="modal fade" id="myModal{{ task.id }}" role="dialog">
+                  <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Atualizar tarefa</h4>
+                    </div>
+                    <div class="modal-body">
+                      <input type="text" name="novo_titulo" required id="novo_titulo" placeholder="Atualizar tarefa" value="{{ task.title }}">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                      <button type="submit" class="btn btn-primary">Atualizar</button>
+                    </div>
+                  </div>
+                </form>
+
+                <td class='table-cel'>
+                  <button type="button" class="btn rounded" data-toggle="modal" data-target="#myModal{{ task.id }}">
+                    Atualizar
+                  </button>
+                </td>
 
             </tr>
           {% endfor %}
