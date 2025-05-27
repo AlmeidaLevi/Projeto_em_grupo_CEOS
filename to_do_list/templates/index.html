@@ -74,22 +74,24 @@
           {% for task in tasks %}
           <div class="task_container">
             <tr class="table-row">
-              <div class="task-item">
-                <form action="{% url 'mark_task' task.id %}" method="post" style="display:inline;">
-                  {% csrf_token %}
-                  <input type="checkbox" name="completed" id="task-{{ task.id }}" {% if task.task_completed %}checked{% endif %} onchange="this.form.submit()">
-                </form>
-                <label for="task-{{ task.id }}" class="task-label" style="margin:0 10px;">
-                  {% if task.task_completed %}
-                    <s>{{ task.title }}</s>
-                  {% else %}
-                    {{ task.title }}
-                  {% endif %}
-                </label>
-                <button type="button" class="btn rounded options-btn" data-toggle="modal" data-target="#optionsModal{{ task.id }}">
-                  <i class="fa-solid fa-ellipsis"></i>
-                </button>
-              </div>
+              <td>
+                <div class="task-item">
+                  <form action="{% url 'mark_task' task.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="checkbox" name="completed" id="task-{{ task.id }}" {% if task.task_completed %}checked{% endif %} onchange="this.form.submit()">
+                  </form>
+                  <label for="task-{{ task.id }}" class="task-label" style="margin:0 10px;">
+                    {% if task.task_completed %}
+                      <s>{{ task.title }}</s>
+                    {% else %}
+                      {{ task.title }}
+                    {% endif %}
+                  </label>
+                  <button type="button" class="btn rounded options-btn" data-toggle="modal" data-target="#optionsModal{{ task.id }}">
+                    <i class="fa-solid fa-ellipsis"></i>
+                  </button>
+                </div>
+              </td>
 
               <div class="modal fade" id="optionsModal{{ task.id }}" tabindex="-1" role="dialog" aria-labelledby="optionsModalLabel{{ task.id }}">
                 <div class="modal-dialog" role="document">
