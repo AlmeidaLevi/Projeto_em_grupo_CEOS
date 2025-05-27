@@ -27,16 +27,16 @@ body {
 }
 
 .content {
-    max-width: 120rem;
-    margin: calc(1.5rem * 2) auto;
-    padding: 1.5rem;
+  max-width: 120rem;
+  margin: calc(1.5rem * 2) auto;
+  padding: 1.5rem;
 }
 
 .search_add_container {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: flex-end;
 }
 
 .search {
@@ -65,28 +65,39 @@ body {
 }
 
 .responsive-table {
-    width: 100%;
-    overflow-x: auto;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .tasks-table {
-    width: 100%;
-    min-width: 60rem;
-    border-collapse: collapse;
+  width: 100%;
+  min-width: 60rem;
+  border-collapse: collapse;
 }
 
 .table-title {
-    color: #fff;
-    font-family: "Actor", sans-serif;
-    font-size: 4.0rem;
-    font-weight: bold;
-    padding: 1.5rem;
-    text-align: center;
+  color: #fff;
+  font-family: "Actor", sans-serif;
+  font-size: 4.0rem;
+  font-weight: bold;
+  padding: 1.5rem;
+  text-align: center;
 }
 
 .table-row {
-    text-align: left;
-    text-overflow: ellipsis;
+  text-align: left;
+  text-overflow: ellipsis;
+}
+
+.task-item {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  gap: 10px;
 }
 
 
