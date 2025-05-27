@@ -29,14 +29,14 @@ body {
 .content {
   max-width: 120rem;
   margin: calc(1.5rem * 2) auto;
-  padding: 1.5rem;  
+  padding: 1.5rem;
 }
 
 .search_add_container {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  justify-content: flex-end;
+  gap: 75%;
+  justify-content: center;
 }
 
 .search {
@@ -50,6 +50,7 @@ body {
   padding: 1rem 2rem;
   width: 100%;
   max-width: 32rem;
+  border-radius: 10px;
 }
 
 .add-task {
