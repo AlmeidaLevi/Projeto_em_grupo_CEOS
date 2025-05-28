@@ -126,20 +126,21 @@
 
   <main class="content">
         <h1 class='table-title'>
-          To do list
-        </h1>
+  To do list
+</h1>
 
-        <div class="search_add_container">
-          <div class="search">
-            <form action="{% url 'search' %}" method="GET">
-              <input type="search" class="search-input" placeholder="Pesquisar atividade" id="search" name="q" value={{ request.GET.q.strip }}>
-            </form>
-          </div>
 
-          <button type="button" class="btn rounded" data-toggle="modal" data-target="#myModal">
-            <i class="fa fa-plus"></i>
-          </button>
-        </div>
+<div class="search-row">
+  <form action="{% url 'search' %}" method="GET" class="search-form">
+    <input type="search" class="search-input" placeholder="Pesquisar atividade" id="search" name="q" value="{{ request.GET.q|default:'' }}">
+  </form>
+
+  <button type="button" class="btn btn-primary add-task-btn" data-toggle="modal" data-target="#myModal">
+    <i class="fa fa-plus"></i>
+  </button>
+</div>
+
+
 
     <div class='responsive-table'>
       <table class="tasks-table">

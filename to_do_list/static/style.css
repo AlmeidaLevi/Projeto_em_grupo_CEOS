@@ -51,6 +51,7 @@ body {
   width: 100%;
   max-width: 32rem;
   border-radius: 10px;
+
 }
 
 .add-task {
@@ -123,4 +124,28 @@ body {
 
 .task-description {
   background-color: #fff;
+}
+
+.search-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+
+.add-task-btn {
+  height: 42px;
+  padding: 0 12px;
+  font-size: 18px;
+}
+
+
+.search-form .search-input {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
