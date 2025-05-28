@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from to_do_list import models
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import auth
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -23,10 +26,17 @@ def search(request):
 
 
 # View que cria uma nova tarefa
-def create_task(request):
+def create_task(request, username):
+
     new_task = request.POST.get('nova_tarefa')
     task_object = models.Task(title=new_task)
-    task_object.save()
+    try:
+        user = User.objects.get(username=username)
+        task_object.owner = user
+        task_object.save()
+    except User.DoesNotExist:
+        task_object.save()
+
     return redirect("index")
 
 
@@ -67,7 +77,21 @@ def index(request):
 
     # Adicionando variaveis a serem usandas no html
     context = {
-        'tasks': tasks
+        'tasks': tasks,
     }
 
     return render(request, 'index.html', context)
+
+
+def login_view(request):
+    form = AuthenticationForm(request, request.POST)
+    if form.is_valid():
+        user = form.get_user()
+        auth.login(request, user)
+
+    return redirect("index")
+
+
+def logout_view(request):
+    auth.logout(request)
+    return redirect("index")
