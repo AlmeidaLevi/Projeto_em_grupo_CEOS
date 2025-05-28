@@ -39,7 +39,7 @@ body {
   justify-content: center;
 }
 
-.search {
+.search { 
   display: flex;
   justify-content: center;
   border-radius: 15%;
@@ -64,12 +64,13 @@ body {
   font-family: "Actor", sans-serif;
   font-size: 2.0rem;
   contain-intrinsic-size: 2.4rem;
+
 }
 
 .responsive-table {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: center;  
 }
 
 .tasks-table {
@@ -89,6 +90,7 @@ body {
   font-weight: bold;
   padding: 1.5rem;
   text-align: center;
+  margin-top: 0px;
 }
 
 .table-row {
@@ -98,17 +100,18 @@ body {
 }
 
 .task-item {
-  background: #fff;
+ background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   display: flex;
   align-items: center;
   padding: 12px 16px;
   margin-bottom: 12px;
-  gap: 10px;
+  gap: 0px;
   width: 400px;
   max-width: 90vw;
   margin: 5 auto;
+  word-break: break-word;
 }
 
 
@@ -130,8 +133,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  margin: 20px 0;
+  gap: 160px;
+  margin: 12px 0;
 }
 
 
@@ -143,9 +146,70 @@ body {
 
 
 .search-form .search-input {
-  width: 300px;
+  width: 200px;
+  padding: 5px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+
+.login-sign-cointainer{
+  display:flex;
+  justify-content: end; 
+  gap: 4px;
+  margin-top: 10px;
+  margin-right: 8px;
+  
+}
+
+.modal-body{
+  display: flex;
+  color:#ADAAAA ;
+  flex-direction: column;
+  margin: 0 auto; 
+  gap: 6px;
+  width: 80%; 
+  border-radius: 10px;
+  border-color: white ;
+}
+
+.modal-content{
+  background-color: #D9D9D9 ;
+  width: 65% ;
+  display: flex;      
+  justify-content: center ;
+  flex-direction: column;
+  margin : 0 auto;
+
+}
+
+input{
+  width: 100%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
+  border-radius: 8px;   
+}
+
+.btn-primary{
+  border: none;
   border-radius: 8px;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;   
+}
+
+  
+.modal-title{
+  justify-content: center;
+  display: flex;
+}
+
+
+.task-check {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-right: 10px;
 }
