@@ -39,73 +39,73 @@
       </form>
     {% else %}
 
-    <!-- login form -->
-    <form action="{% url "login" %}" method='POST'>
-      {% csrf_token %}
-      <!-- Modal Login-->
-      <div class="modal fade" id="loginModal" role="dialog">
-        <div class="modal-dialog">
+      <!-- login form -->
+      <form action="{% url "login" %}" method='POST'>
+        {% csrf_token %}
+        <!-- Modal Login-->
+        <div class="modal fade" id="loginModal" role="dialog">
+          <div class="modal-dialog">
 
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
 
-              <h4 class="modal-title">Fazer login</h4>
+                <h4 class="modal-title">Fazer login</h4>
+              </div>
+
+              <div class="modal-body">
+                <input type="text" name="username" required id="username" placeholder=" Nome de usuario">
+                <input type="text" name="password" required id="password" placeholder=" Senha">
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Logar</button>
+              </div>
+
             </div>
-
-            <div class="modal-body">
-              <input type="text" name="username" required id="username" placeholder=" Nome de usuario">
-              <input type="text" name="password" required id="password" placeholder=" Senha">
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Logar</button>
-            </div>
-
           </div>
         </div>
-      </div>
-    </form>
+      </form>
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">
-      Login
-    </button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">
+        Login
+      </button>
 
+
+      <!-- Sing up form -->
+      <form action="{% url "sign_up" %}" method='POST'>
+        {% csrf_token %}
+        <!-- Modal sing up-->
+        <div class="modal fade" id="singupModal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+
+                <h4 class="modal-title">Sign up</h4>
+              </div>
+
+              <div class="modal-body">
+                <input type="text" name="sign_up_user" required id="sign_up_user" placeholder=" Nome de usuario">
+                <input type="text" name="sign_up_password" required id="sign_up_password" placeholder=" Senha">
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#singupModal" data-dismiss="modal">
+        Sign up
+      </button>
     {% endif %}
-
-    <!-- Sing up form -->
-    <form action="{% url "sign_up" %}" method='POST'>
-      {% csrf_token %}
-      <!-- Modal sing up-->
-      <div class="modal fade" id="singupModal" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-
-              <h4 class="modal-title">Sign up</h4>
-            </div>
-
-            <div class="modal-body">
-              <input type="text" name="sign_up_user" required id="sign_up_user" placeholder=" Nome de usuario">
-              <input type="text" name="sign_up_password" required id="sign_up_password" placeholder=" Senha">
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Salvar</button>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </form>
-
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#singupModal" data-dismiss="modal">
-      Sign up
-    </button>
 
   </header>
 
