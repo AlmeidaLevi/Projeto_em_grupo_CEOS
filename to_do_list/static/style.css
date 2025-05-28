@@ -30,6 +30,7 @@ body {
   max-width: 120rem;
   margin: calc(1.5rem * 2) auto;
   padding: 1.5rem;
+  margin-top: 10px;
 }
 
 .search_add_container {
@@ -90,7 +91,7 @@ body {
   font-weight: bold;
   padding: 1.5rem;
   text-align: center;
-  margin-top: 0px;
+  margin: 0
 }
 
 .table-row {
@@ -156,16 +157,15 @@ body {
 
 .login-sign-cointainer{
   display:flex;
-  justify-content: end;
   gap: 4px;
   margin-top: 10px;
   margin-right: 8px;
-
+  justify-content: end;
 }
 
 .modal-body{
   display: flex;
-  color:#ADAAAA ;
+  color:#383838 ;
   flex-direction: column;
   margin: 0 auto;
   gap: 6px;
@@ -217,9 +217,28 @@ input{
 .message-info {
   color: white;
   background-color: green;
+  padding: 5px;
+  border-radius: 4px;
 }
 
 .message-error {
   color: white;
   background-color: red;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 4px;
+}
+
+.username{
+  justify-content: flex-start;
+  display: flex;
+  background: var(--primary-color);
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 4px;
+  border: rgb(255, 255, 255) solid 1px;
+  margin-left: 10px;
+  margin-right: auto; 
 }

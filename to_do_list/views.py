@@ -90,18 +90,18 @@ def login_view(request):
         user = User.objects.get(username=username)
         if user.password == password:
             auth.login(request, user)
-            messages.info(request, "usuario logado com sucesso")
+            messages.info(request, "O usuário foi logado com sucesso")
         else:
-            messages.error(request, "Senha incorreta")
+            messages.error(request, "A senha está incorreta")
     except User.DoesNotExist:
-        messages.error(request, "Usuário não existe")
+        messages.error(request, "O usuário não existe")
 
     return redirect("index")
 
 
 def logout_view(request):
     auth.logout(request)
-    messages.info(request, "deslogado")
+    messages.info(request, "Você foi deslogado")
     return redirect("index")
 
 
@@ -110,11 +110,11 @@ def sign_up_view(request):
     password = request.POST.get('sign_up_password')
     try:
         user = User.objects.get(username=username)
-        messages.error(request, f"usuario {user} já existe")
+        messages.error(request, f"O usuário {user} já existe")
     except User.DoesNotExist:
         new_user = User(username=username, password=password)
         new_user.save()
         auth.login(request, new_user)
-        messages.info(request, "Usuario criado com SUCESSO")
+        messages.info(request, "Usuário criado com sucesso")
 
     return redirect("index")

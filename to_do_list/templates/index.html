@@ -16,6 +16,13 @@
 <body>
  <header class= "login-sign-cointainer">
 
+   
+   {% if user.is_authenticated %}
+   <div class="username" style="color: white">
+     Usuário:
+     {{ user }}
+    </div>
+    {% endif %}
     {% if messages %}
       {% for message in messages %}
         <div class="message-{{ message.tags }}">
@@ -25,15 +32,9 @@
     {% endif %}
 
     {% if user.is_authenticated %}
-      <div class="username" style="color: white">
-        {{ user }}
-      </div>
-    {% endif %}
-
-    {% if user.is_authenticated %}
       <form action="{% url "logout" %}" method="post">
         {% csrf_token %}
-        <button type="submit">
+        <button class="btn btn-primary" type="submit">
           Logout
         </button>
       </form>
