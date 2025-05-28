@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from to_do_list import models
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -84,14 +83,38 @@ def index(request):
 
 
 def login_view(request):
-    form = AuthenticationForm(request, request.POST)
-    if form.is_valid():
-        user = form.get_user()
-        auth.login(request, user)
+    username = request.POST.get("username")
+    password = request.POST.get("password")
+
+    try:
+        user = User.objects.get(username=username)
+        if user.password == password:
+            auth.login(request, user)
+            messages.info(request, "usuario logado com sucesso")
+        else:
+            messages.error(request, "Senha incorreta")
+    except User.DoesNotExist:
+        messages.error(request, "Usuário não existe")
 
     return redirect("index")
 
 
 def logout_view(request):
     auth.logout(request)
+    messages.info(request, "deslogado")
+    return redirect("index")
+
+
+def sign_up_view(request):
+    username = request.POST.get('sign_up_user')
+    password = request.POST.get('sign_up_password')
+    try:
+        user = User.objects.get(username=username)
+        messages.error(request, f"usuario {user} já existe")
+    except User.DoesNotExist:
+        new_user = User(username=username, password=password)
+        new_user.save()
+        auth.login(request, new_user)
+        messages.info(request, "Usuario criado com SUCESSO")
+
     return redirect("index")

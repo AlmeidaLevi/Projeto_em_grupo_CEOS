@@ -39,7 +39,7 @@ body {
   justify-content: center;
 }
 
-.search { 
+.search {
   display: flex;
   justify-content: center;
   border-radius: 15%;
@@ -70,7 +70,7 @@ body {
 .responsive-table {
   width: 100%;
   display: flex;
-  justify-content: center;  
+  justify-content: center;
 }
 
 .tasks-table {
@@ -156,20 +156,20 @@ body {
 
 .login-sign-cointainer{
   display:flex;
-  justify-content: end; 
+  justify-content: end;
   gap: 4px;
   margin-top: 10px;
   margin-right: 8px;
-  
+
 }
 
 .modal-body{
   display: flex;
   color:#ADAAAA ;
   flex-direction: column;
-  margin: 0 auto; 
+  margin: 0 auto;
   gap: 6px;
-  width: 80%; 
+  width: 80%;
   border-radius: 10px;
   border-color: white ;
 }
@@ -177,7 +177,7 @@ body {
 .modal-content{
   background-color: #D9D9D9 ;
   width: 65% ;
-  display: flex;      
+  display: flex;
   justify-content: center ;
   flex-direction: column;
   margin : 0 auto;
@@ -189,7 +189,7 @@ input{
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 8px;   
+  border-radius: 8px;
 }
 
 .btn-primary{
@@ -197,10 +197,10 @@ input{
   border-radius: 8px;
   background-color: var(--primary-color);
   color: white;
-  cursor: pointer;   
+  cursor: pointer;
 }
 
-  
+
 .modal-title{
   justify-content: center;
   display: flex;
@@ -212,4 +212,14 @@ input{
   height: 20px;
   flex-shrink: 0;
   margin-right: 10px;
+}
+
+.message-info {
+  color: white;
+  background-color: green;
+}
+
+.message-error {
+  color: white;
+  background-color: red;
 }

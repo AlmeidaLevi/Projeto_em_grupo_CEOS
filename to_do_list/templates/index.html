@@ -13,8 +13,23 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<body> 
+<body>
  <header class= "login-sign-cointainer">
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="message-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {% if user.is_authenticated %}
+      <div class="username" style="color: white">
+        {{ user }}
+      </div>
+    {% endif %}
+
     {% if user.is_authenticated %}
       <form action="{% url "logout" %}" method="post">
         {% csrf_token %}
@@ -45,7 +60,7 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Salvar</button>
+              <button type="submit" class="btn btn-primary">Logar</button>
             </div>
 
           </div>
@@ -60,7 +75,7 @@
     {% endif %}
 
     <!-- Sing up form -->
-    <form action="" method='POST'>
+    <form action="{% url "sign_up" %}" method='POST'>
       {% csrf_token %}
       <!-- Modal sing up-->
       <div class="modal fade" id="singupModal" role="dialog">
@@ -69,20 +84,20 @@
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
-           
+
               <h4 class="modal-title">Sign up</h4>
             </div>
 
             <div class="modal-body">
-              <input type="text" name="login_user" required id="login_user" placeholder=" Nome de usuario">
-              <input type="text" name="login_user_password" required id="login_user_password" placeholder=" Senha">
+              <input type="text" name="sign_up_user" required id="sign_up_user" placeholder=" Nome de usuario">
+              <input type="text" name="sign_up_password" required id="sign_up_password" placeholder=" Senha">
             </div>
 
-            <div class="modal-footer">  
+            <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
               <button type="submit" class="btn btn-primary">Salvar</button>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -97,7 +112,7 @@
 
 
   <div class="container">
-    
+
       <form action="{% url 'create_task' user %}" method='POST'>
         {% csrf_token %}
         <!-- Botão Criar tarefa-->
@@ -106,7 +121,7 @@
 
           <div class="modal-content">
             <div class="modal-header">
-             
+
               <h4 class="modal-title">Adicionar nova tarefa</h4>
             </div>
             <div class="modal-body">
@@ -125,15 +140,15 @@
     </div>
 
   <main class="content">
-    
+
         <h1 class='table-title'>
-          
+
   To do list
 </h1>
 
 
 <div class="search-row">
-  
+
   <form action="{% url 'search' %}" method="GET" class="search-form">
     <input type="search" class="search-input" placeholder=" Pesquisar " id="search" name="q" value="{{ request.GET.q|default:'' }}">
   </form>
